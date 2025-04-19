@@ -65,3 +65,6 @@ Generate a json value file for specific repo before editing it:
 
 Apply changes after editing the json file:
 >python3 frogfetch.py prepare-edit --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ... --repo test-repo
+
+Delete specific repo:
+>python3 frogfetch.py delete-repo "mydomain.jfrog.io" --token aJGrm31GedYtXzZ... --repo test-repo
