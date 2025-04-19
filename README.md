@@ -50,14 +50,14 @@ pip install -r requirements.txt
 | Delete repo by force| `--force`|Does not wait for deletion confirmation, less recommanded|
 
 ## Commands
-| Command                           | Flag            |
-|-----------------------------------|-----------------|
-| Check credentials and hostname    | `'dry-run'`     |
-| List available repos              | `'list-repos'`  |
+| Command                           | Flag         |
+|-----------------------------------|--------------|
+| Check credentials and hostname    | `dry-run`    |
+| List available repos              | `list-repos` |
 | Check Artifactory health via ping | `system-health` |
-| Pull values of repo before editing| `prepare-edit`  |
-| Updates repo values based on file | `apply-edit`    |
-| Delete specic repo                | `delete-repo`   |
+| Pull values of repo before editing| `prepare-edit` |
+| Updates repo values based on file | `apply-edit` |
+| Delete specic repo                | `delete-repo` |
 ## Example:
 Check credentials and hostname
 >python3 frogfetch.py dry-run --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ...
