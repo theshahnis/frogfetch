@@ -1,5 +1,6 @@
 import base64
 import logging
+import click
 
 logger = logging.getLogger("frogfetch")
 
@@ -10,3 +11,19 @@ def secure_login(username, password):
     except Exception as e:
         logger.error(f"Failed generating encoded auth due to {e}")
         raise
+
+def get_headers(token: str, username: str, password: str) -> dict:
+    """
+    Builds authentication headers for Artifactory.
+    """
+    if not token and not (username and password):
+        raise click.ClickException("Provide either a token or both username/password.")
+
+    if token:
+        return {"Authorization": f"Bearer {token}"}
+    else:
+        encoded = secure_login(username, password)
+        return {
+            "Authorization": f"Basic {encoded}",
+            "Content-Type": "application/json"
+        }

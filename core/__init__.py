@@ -1,1 +1,3 @@
-from .artifactory import ArtifactoryManager
+from .base import ArtifactoryManager
+from .repository import RepositoryManager
+from .system import SystemManager

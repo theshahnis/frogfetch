@@ -27,8 +27,20 @@ Run the following commands to install any dependencies:
 | Auth with Token    | `'--token <token>'`             | Use Reference Token to authenticate to the artifactory       |
 | Artifactory URL    | `--url <artifactory_url>`       | Enter the relevant artifactory server url                    |
 
+## Commands
+| Command                           | Flag            |
+|-----------------------------------|-----------------|
+| Check credentials and hostname    | `'dry-run'`     |
+| List available repos              | `'list-repos'`  |
+| Check Artifactory health via ping | `system-health` |
 
 
 ## Example:
 Check credentials and hostname
 >python3 frogfetch.py dry-run --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
+
+List available repos:
+>python3 frogfetch.py list-repos --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
+
+Check health of Artifactory:
+>python3 frogfetch.py system-health --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
