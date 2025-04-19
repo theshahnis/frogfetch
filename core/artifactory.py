@@ -1,6 +1,7 @@
 import requests
 import click
 import logging
+from urllib.parse import urljoin
 
 logger = logging.getLogger("frogfetch")
 
@@ -8,11 +9,14 @@ class ArtifactoryManager:
     def __init__(self, url, headers):
         self.url = url
         self.headers = headers
-        self.endpoint = '/artifactory/api/repositories'
+
+    def make_request(self, endpoint: str):
+        full_url = urljoin(f"https://{self.url}", endpoint)
+        return requests.get(full_url, headers=self.headers)
 
     def check_connection(self):
         try:
-            response = requests.get(f"https://{self.url}{self.endpoint}", headers=self.headers)
+            response = self.make_request('/artifactory/api/repositories')
 
             match response.history:
                 case [redirect] if redirect.status_code >= 302:
