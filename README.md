@@ -4,7 +4,6 @@
 A simple CLI tool to get information from Artifactory.
 At the moment it only checks for the url and user auth.
 Todo:
- - organaize in class structure
  - add system-health command
 
 ## Configuration
