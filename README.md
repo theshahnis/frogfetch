@@ -1,23 +1,34 @@
 
-## CLI tool to manage Artifactory instances
+# 🐸 Frogfetch - A CLI Tool to Manage JFrog Artifactory Instances
 
-A simple CLI tool to get information from Artifactory.
-At the moment it only checks for the url and user auth.
-Todo:
- - add system-health command
+A simple and modular command-line tool to interact with [JFrog Artifactory](https://jfrog.com/artifactory/).
 
-## Configuration
+At the moment, the CLI supports:
 
-na
+- Authentication via token or username/password
+- Connection validation and health checks
+- Listing available repositories
+
+> 🚧 **Coming soon:** Upload/delete artifacts, create/delete repositories
+
+---
+
+## ⚙️ Configuration
+
+No configuration is required at this stage. All flags (e.g., `--url`, `--token`) are passed via the CLI.
+
+If you'd like to configure defaults in the future, support for `.env` or config files will be added.
+
+---
+
+## 📦 Installation
+
+Install dependencies with:
+
+```bash
+pip install -r requirements.txt
 ```
-na
-```
 
-## Installation
-
-Run the following commands to install any dependencies:
->pip install -r requirements.txt
-> 
 ## Usage
 
 
