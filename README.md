@@ -8,8 +8,10 @@ At the moment, the CLI supports:
 - Authentication via token or username/password
 - Connection validation and health checks
 - Listing available repositories
+- Fetching and updating repositories values
+- Deleting repositories
 
-> 🚧 **Coming soon:** Upload/delete artifacts, create/delete repositories
+> 🚧 **Coming soon:** Upload/delete artifacts, Create repositories
 
 ---
 
