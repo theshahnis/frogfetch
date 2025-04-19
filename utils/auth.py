@@ -1,8 +1,8 @@
 import base64
-import logging
+from utils.logging_setup import get_logger
 import click
 
-logger = logging.getLogger("frogfetch")
+logger = get_logger("frogfetch")
 
 def secure_login(username, password):
     try:

@@ -37,6 +37,9 @@ pip install -r requirements.txt
 | Auth with password | `'--user <user> --pass <pass>'` | Use username and password to authenticate to the artifcatory |
 | Auth with Token    | `'--token <token>'`             | Use Reference Token to authenticate to the artifactory       |
 | Artifactory URL    | `--url <artifactory_url>`       | Enter the relevant artifactory server url                    |
+| Save values to specific file|`--output <file_name>`| Enter the new filename, better to leave empty for quick loading|
+| Apply values to update specific repo| `--file_path <file_path>`| Select a relevant file or keep empty to load the one downloaded from `prepare-edit`|
+| Delete repo by force| `--force`|Does not wait for deletion confirmation, less recommanded|
 
 ## Commands
 | Command                           | Flag            |
@@ -44,14 +47,21 @@ pip install -r requirements.txt
 | Check credentials and hostname    | `'dry-run'`     |
 | List available repos              | `'list-repos'`  |
 | Check Artifactory health via ping | `system-health` |
-
-
+| Pull values of repo before editing| `prepare-edit`  |
+| Updates repo values based on file | `apply-edit`    |
+| Delete specic repo                | `delete-repo`   |
 ## Example:
 Check credentials and hostname
->python3 frogfetch.py dry-run --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
+>python3 frogfetch.py dry-run --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ...
 
 List available repos:
->python3 frogfetch.py list-repos --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
+>python3 frogfetch.py list-repos --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ...
 
 Check health of Artifactory:
->python3 frogfetch.py system-health --url "mydomain.jfrog.io" --token "aJGrm31GedYtXzZ..."
+>python3 frogfetch.py system-health --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ...
+
+Generate a json value file for specific repo before editing it:
+>python3 frogfetch.py prepare-edit --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ... --repo test-repo
+
+Apply changes after editing the json file:
+>python3 frogfetch.py prepare-edit --url "mydomain.jfrog.io" --token aJGrm31GedYtXzZ... --repo test-repo
