@@ -16,6 +16,12 @@ At the moment, the CLI supports:
 ## ⚙️ Configuration
 
 No configuration is required at this stage. All flags (e.g., `--url`, `--token`) are passed via the CLI.
+If you require a virtualenv - perform the following command in project root repo:
+>python3 -m venv venv
+
+On Linux/Mac use `source venv/bin/activate`
+
+On Windows use `venv\Scripts\activate`
 
 If you'd like to configure defaults in the future, support for `.env` or config files will be added.
 
