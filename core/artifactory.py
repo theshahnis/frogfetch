@@ -14,7 +14,19 @@ class ArtifactoryManager:
         full_url = urljoin(f"https://{self.url}", endpoint)
         return requests.get(full_url, headers=self.headers)
 
-    def check_connection(self):
+    def check_instance_status(self):
+        """Checks if the Artifactory instance is reachable (ping endpoint)."""
+        try:
+            response = self.make_request('/artifactory/api/system/ping')
+            if response.status_code == 200 and response.text.strip() == "OK":
+                click.echo("✅ Artifactory is reachable.")
+            else:
+                raise click.ClickException(f"❌ Ping failed: {response.status_code} – {response.text.strip()}")
+        except Exception as e:
+            raise click.ClickException(f"❗ Instance check failed: {str(e)}")
+
+    def validate_auth_and_url(self):
+        """Validates user auth and if hostname is valid and active"""
         try:
             response = self.make_request('/artifactory/api/repositories')
 
@@ -44,3 +56,17 @@ class ArtifactoryManager:
         except requests.exceptions.RequestException as e:
             logger.exception("RequestException occurred")
             raise click.ClickException(f"❗ Request failed: {str(e)}")
+
+    def list_repositories(self):
+        endpoint = '/artifactory/api/repositories'
+        response = self.make_request(endpoint)
+
+        if response.status_code == 200:
+            repos = response.json()
+            click.echo("📦 Repositories:")
+            for repo in repos:
+                click.echo(f" - {repo.get('key')} ({repo.get('type')})")
+        elif response.status_code == 401:
+            raise click.ClickException("🔒 Unauthorized – check your token or credentials.")
+        else:
+            raise click.ClickException(f"❌ Failed to list repositories: {response.status_code}")
